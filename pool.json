@@ -1,0 +1,6 @@
+{
+    "name": "YOUR_POOL_NAME",
+    "description": "YOUR_POOL_DESCRIPTION",
+    "ticker": "POOL_TICKER(example: SLK)",
+    "homepage": "POLL_HOMEPAGE"
+}

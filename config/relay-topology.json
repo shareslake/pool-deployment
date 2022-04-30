@@ -1,0 +1,14 @@
+{
+  "Producers": [
+    {
+      "addr": "YOUR_BLOCK_PRODUCING_IP",
+      "port": 3001,
+      "valency": 1
+    },
+    {
+      "addr": "relays.shareslake.network",
+      "port": 3001,
+      "valency": 1
+    }
+  ]
+}

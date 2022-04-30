@@ -1,0 +1,21 @@
+[Unit]
+Description=Shareslake node
+After=multi-user.target
+[Service]
+Type=simple
+ExecStart=/opt/shareslake/bin/run.sh
+
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+StandardOutput=file:/opt/shareslake/logs/out.log
+StandardError=file:/opt/shareslake/logs/err.log
+SyslogIdentifier=shareslake-node
+LimitNOFILE=32768
+
+Restart=on-failure
+RestartSec=15s
+WorkingDirectory=/opt/shareslake
+User=shareslake
+Group=shareslake
+[Install]
+WantedBy=multi-user.target

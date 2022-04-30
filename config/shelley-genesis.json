@@ -1,0 +1,60 @@
+{
+  "maxLovelaceSupply": 1e+16,
+  "securityParam": 2160,
+  "slotsPerKESPeriod": 129600,
+  "updateQuorum": 5,
+  "activeSlotsCoeff": 0.1,
+  "protocolParams": {
+    "minUTxOValue": 1000000,
+    "eMax": 18,
+    "extraEntropy": {
+      "tag": "NeutralNonce"
+    },
+    "minFeeB": 1000,
+    "tau": 0,
+    "maxBlockBodySize": 65536,
+    "minPoolCost": 100000000,
+    "minFeeA": 3,
+    "maxTxSize": 16384,
+    "nOpt": 150,
+    "maxBlockHeaderSize": 1100,
+    "keyDeposit": 2000000,
+    "protocolVersion": {
+      "minor": 0,
+      "major": 2
+    },
+    "poolDeposit": 300000000,
+    "a0": 0.2,
+    "rho": 0,
+    "decentralisationParam": 1
+  },
+  "networkMagic": 777333,
+  "initialFunds": {},
+  "maxKESEvolutions": 60,
+  "networkId": "Mainnet",
+  "genDelegs": {
+    "7d99b2a6a7cc91e4cd449e9f7e125d7ef7ce5fc415caf3442e322a5b": {
+      "delegate": "13e8e34c10ff026e2ed1e3ba08dced53b94f0dd4578d61d7b3a4d62c",
+      "vrf": "3d6d968cbc33bc3ffcfbe92fbd921dbef41c3980be25e83f269a18f9c7a88e1b"
+    },
+    "9e4a1dab4260d0e81e60eb553901f2085132c8246ac77c104e8e292c": {
+      "delegate": "4356d962bb33bda31006bbd0c96ea62ccae0454dcfd87c76a61e086e",
+      "vrf": "dfeb7d120d4a2025d4a6bbf67a200191be6bac3b25d2a75db4bcba99582b6339"
+    },
+    "a38f5de7653ce6afa12e0834ff39a760136a819a05eca53260897229": {
+      "delegate": "b5d4a43e72c495542efaa32c42c814c79563438842c286cb45cc6825",
+      "vrf": "6859ac40431926586641e1e40a82d927e7b991940932366b9ab0d95dbff06ca0"
+    },
+    "698c76e3947266541c71ce14bb186036bc6a11a92d107b295d53ef8a": {
+      "delegate": "b5f7fc2d950100250ce913acdbfdd94048b9d8745a115a636376c1bf",
+      "vrf": "191aae601949f533396c81238bb5c37043b314c12d246a9f6226d56c1be28fb4"
+    },
+    "ce0f6f76db5d5f067f451d2ed16d0c3ca081612849d8cbf8f67c8404": {
+      "delegate": "b8b6b2b7b5083a4436ff9dfca3b8e80035012bd633b6d0d3b2fa43cc",
+      "vrf": "2b27d5ec944dea5c322b2d7a0f91b2c1f97e0ac411b0c4b00f516dbad0f0a3b5"
+    }
+  },
+  "slotLength": 1,
+  "systemStart": "2022-04-26T22:58:07Z",
+  "epochLength": 259200
+}
