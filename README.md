@@ -89,6 +89,100 @@ Once you have generated the keys, copy the following to the block-producing node
 | `<your_keys_dir>/pool/pool-vrf.skey`         | `/home/shareslake/.shelley/vrf.skey`  |
 | `<your_keys_dir>/pool/pool-operational.cert` | `/home/shareslake/.shelley/node.cert` |
 
+### Register the pool certificates
+
+At this point, you will need to have the relay running and synced to be able to submit a transaction. Check the next step to start your relay and wait until it is synced.
+
+To register the pool certificates you need to create and submit a transaction containing them.
+
+You can find here how to do it step by step if you are not familiar with it. The scripts above already generated all the files you will need
+
+Use the following to check your balance, `TxHash` and `TxIx`:
+
+```console
+shareslake-cli query utxo --address <your_address> --mainnet
+```
+
+Draft the Tx and calculate the fees:
+
+```console
+shareslake-cli transaction build-raw \
+    --tx-in <TxHash>#<TxIx> \
+    --tx-out $(cat <your_keys_dir>/owner/payment.addr)+0 \
+    --invalid-hereafter 0 \
+    --fee 0 \
+    --out-file tx.draft \
+    --certificate-file <your_keys_dir>/owner/stake.reg.cert \
+    --certificate-file <your_keys_dir>/owner/owner-stake.deleg.cert \
+    --certificate-file <your_keys_dir>/pool/stake-reward.registration.cert \
+    --certificate-file <your_keys_dir>/pool/registration.cert \
+    --mainnet
+
+# Calculate fees
+shareslake-cli query protocol-parameters --mainnet > protocol.json
+shareslake-cli transaction calculate-min-fee \
+    --tx-body-file tx.draft \
+    --tx-in-count 1 \
+    --tx-out-count 1 \
+    --witness-count 3 \
+    --byron-witness-count 0 \
+    --mainnet \
+    --protocol-params-file protocol.json
+```
+
+Calculate the change as `<UTxO BALANCE> - <poolDeposit> - <TRANSACTION FEE>`. The pool deposit can be found into the `./protocol.json` file.
+
+Now let's build the actual Tx. Use as `TTL` the current epoch plus some more.
+
+```
+shareslake-cli transaction build-raw \
+    --tx-in <TxHash>#<TxIx> \
+    --tx-out $(cat <your_keys_dir>/owner/payment.addr)+<CHANGE IN LOVELACE> \
+    --invalid-hereafter <TTL> \
+    --fee <TRANSACTION FEE> \
+    --out-file tx.raw \
+    --certificate-file <your_keys_dir>/owner/stake.reg.cert \
+    --certificate-file <your_keys_dir>/owner/owner-stake.deleg.cert \
+    --certificate-file <your_keys_dir>/pool/stake-reward.registration.cert \
+    --certificate-file <your_keys_dir>/pool/registration.cert \
+    --mainnet
+```
+
+Sign the Tx:
+
+```console
+shareslake-cli transaction sign \
+    --tx-body-file tx.raw \
+    --signing-key-file <your_keys_dir>/owner/payment.skey \
+    --signing-key-file <your_keys_dir>/owner/stake.skey \
+    --signing-key-file .<your_keys_dir>/pool/stake-reward.skey \
+    --signing-key-file <your_keys_dir>/pool/pool.skey \
+    --mainnet \
+    --out-file tx.signed
+```
+
+Now copy the signed transaction to your relay node, and execute the following to submit it:
+
+```console
+shareslake-cli transaction submit \
+    --tx-file tx.signed \
+    --mainnet
+```
+
+After some time, check the registration is correct as follows:
+
+1. We need to the pool id:
+
+```console
+shareslake-cli stake-pool id --cold-verification-key-file <your_keys_dir>/pool/pool.vkey --output-format "hex"
+```
+
+2. Check your pool id is on the network:
+
+```console
+shareslake-cli query ledger-state --mainnet | grep publicKey | grep <poolId>
+```
+
 ### Start the nodes
 
 1. Start the relay node and wait until it is synced:
@@ -108,6 +202,9 @@ systemctl start shareslake-node
 And that's all! Now you have a working stake pool that will be receiving rewards from transactions validations at the end of each epoch.
 Remember it will take 2 epochs boundaries for your pool to start earning.
 You can now start convincing people to delegate their RED to your pool, the more RED delegated to your pool, the more rewards you will obtain.
+
+
+
 
 ## Containerized deployment
 
