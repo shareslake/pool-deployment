@@ -203,8 +203,19 @@ And that's all! Now you have a working stake pool that will be receiving rewards
 Remember it will take 2 epochs boundaries for your pool to start earning.
 You can now start convincing people to delegate their RED to your pool, the more RED delegated to your pool, the more rewards you will obtain.
 
+## Debug information
 
+### Wrong genesis hash
 
+If you see a message in `/opt/shareslake/logs/out.log` stating that the genesis hash indicated in the configuration file differs from the actual hash, delete the content of the corresponding genesis file (one of `/opt/shareslake/shelley/genesis.json`, `/opt/shareslake/shelley/genesis.alonzo.json` or `/opt/shareslake/byron/genesis.json`) and copy-paste the content inside from the `config` directory in this repository (without trailing spaces at the end). Then check the hash correspond with the hash specified in the configuration file at `/opt/sharesake/configuration/`.
+
+Use the following command to check the hash:
+
+```console
+shareslake-cli genesis hash --genesis <file_path>
+```
+
+> Be sure to be working as `shareslake` user during this process. If you are working as root you will need to export `LD_LIBRARY_PATH` and `PATH` manually to use the shareslake binaries.
 
 ## Containerized deployment
 
