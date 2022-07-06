@@ -39,9 +39,9 @@ First you need to download the Shareslake binaries and `libsodium` library. The 
 Run the following:
 
 ```console
-wget -O /opt/shareslake/bin/shareslake-node https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.34.1/shareslake-node
-wget -O /opt/shareslake/bin/shareslake-cli https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.34.1/shareslake-cli
-wget -O /opt/shareslake/lib/libsodium.so.23 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.34.1/libsodium.so.23
+wget -O /opt/shareslake/bin/shareslake-node https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/shareslake-node
+wget -O /opt/shareslake/bin/shareslake-cli https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/shareslake-cli
+wget -O /opt/shareslake/lib/libsodium.so.23 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/libsodium.so.23
 ```
 
 > IMPORTANT: The binaries currently are built for linux x86-64 arch.
@@ -220,3 +220,27 @@ shareslake-cli genesis hash --genesis <file_path>
 ## Containerized deployment
 
 ### TODO: publish container images
+
+## Upgrading nodes from `1.34.1` to `1.35.0`
+
+Upgrading the nodes is a simple process:
+
+1. Stop the running node: `systemctl stop shareslake-node`.
+1. Go to `/opt/shareslake/bin` and remove `shareslake-cli` and `shareslake-node` binaries.
+1. Download the new binaries:
+
+```console
+wget -O /opt/shareslake/bin/shareslake-cli https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/shareslake-cli
+wget -O /opt/shareslake/bin/shareslake-node https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/shareslake-node
+chmod +x /opt/shareslake/bin/*
+```
+
+1. Start the node: `systemctl start shareslake-node`.
+1. Check the status with `systemctl status shareslake-node`. If there is an error check `/opt/shareslake/logs/err.log`. If the error is a missing library called `libsecp256k1.so.0` execute the following and then check the node status again:
+
+```console
+wget -O /opt/shareslake/lib/libsecp256k1.so.0 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/libsecp256k1.so.0
+systemctl start shareslake-node
+```
+
+
