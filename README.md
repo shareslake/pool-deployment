@@ -221,9 +221,9 @@ shareslake-cli genesis hash --genesis <file_path>
 
 ### TODO: publish container images
 
-## Upgrading nodes from `1.34.1` to `1.35.0`
+## Upgrading
 
-Upgrading the nodes is a simple process:
+### `1.34.1` to `1.35.0`
 
 1. Stop the running node: `systemctl stop shareslake-node`.
 1. Go to `/opt/shareslake/bin` and remove `shareslake-cli` and `shareslake-node` binaries.
