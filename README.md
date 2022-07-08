@@ -219,7 +219,10 @@ shareslake-cli genesis hash --genesis <file_path>
 
 ## Containerized deployment
 
-### TODO: publish container images
+Shareslake node: https://hub.docker.com/repository/docker/shareslake/shareslake-node
+Shareslake db sync: https://hub.docker.com/repository/docker/shareslake/shareslake-db-sync
+
+Check [this](https://github.com/shareslake/cardano-address-monitor/blob/main/test/docker-compose.yaml) `docker-compose.yaml` file for an example of a Shareslake relay plus shareslake-db-sync and the Shareslake's cardano-address monitor.
 
 ## Upgrading
 
