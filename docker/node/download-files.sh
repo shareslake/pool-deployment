@@ -15,7 +15,7 @@ wget --no-check-certificate -O /opt/shareslake/shelley/genesis/genesis.alonzo.js
 wget --no-check-certificate -O /opt/shareslake/byron/genesis/genesis.json https://github.com/shareslake/pool-deployment/raw/main/config/byron-genesis.json && \
 wget --no-check-certificate -O /opt/shareslake/configuration/configuration-mainnet.yaml https://github.com/shareslake/pool-deployment/raw/main/config/configuration-mainnet.yaml && \
 wget --no-check-certificate -O /opt/shareslake/lib/libsodium.so.23 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.34.1/libsodium.so.23 && \
-wget --no-check-certificate -O /opt/shareslake/lib/libsecp256k1.so.0 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.3/libsecp256k1.so.0
+wget --no-check-certificate -O /opt/shareslake/lib/libsecp256k1.so.0 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/libsecp256k1.so.0
 
 cat > /opt/shareslake/configuration/topology.json <<EOF
 {
