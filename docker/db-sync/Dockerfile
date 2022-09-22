@@ -20,5 +20,5 @@ RUN /download-files.sh
 USER 1001
 
 ENTRYPOINT ["/usr/local/bin/shareslake-db-sync"]
-CMD ["--config", "/opt/shareslake/db-sync/config.yaml", "--socket-path", "/opt/shareslake/node-ipc/node.socket", "--state-dir", "/opt/shareslake/db-sync/ledger-state", "--schema-dir", "/opt/shareslake/db-sync/schema"]
+CMD ["--config", "/opt/shareslake/db-sync/config.yaml", "--socket-path", "/opt/shareslake/node-ipc/node.sock", "--state-dir", "/opt/shareslake/db-sync/ledger-state", "--schema-dir", "/opt/shareslake/db-sync/schema"]
 

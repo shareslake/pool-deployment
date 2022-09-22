@@ -14,4 +14,4 @@ COPY ./config.yaml /config.yaml
 USER 1001
 
 ENTRYPOINT ["/usr/local/bin/shareslake-submit-api"]
-CMD ["--config", "config.yaml", "--mainnet", "--socket-path", "/node-ipc/node.socket", "--listen-address", "0.0.0.0"]
+CMD ["--config", "config.yaml", "--mainnet", "--socket-path", "/node-ipc/node.sock", "--listen-address", "0.0.0.0"]
