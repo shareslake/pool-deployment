@@ -42,6 +42,7 @@ Run the following:
 wget -O /opt/shareslake/bin/shareslake-node https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.3/shareslake-node
 wget -O /opt/shareslake/bin/shareslake-cli https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.3/shareslake-cli
 wget -O /opt/shareslake/lib/libsodium.so.23 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.3/libsodium.so.23
+wget -O /opt/shareslake/lib/libsecp256k1.so.0 https://shareslake-public-binaries.s3.eu-west-3.amazonaws.com/1.35.0/libsecp256k1.so.0
 ```
 
 > IMPORTANT: The binaries currently are built for linux x86-64 arch.
