@@ -16,6 +16,11 @@ A stake pool is composed of two different nodes, a relay node that will be expos
 It is strongly recommended to preserve the keys in an off-line machine, also called air-gapped machine. This can be an old computer in which you can sing the transactions and then move them using, for example, a pen-drive to the online computer to submit it.
 There are some keys that are required to remain in the running nodes and need to be changed from time to time.
 
+## Network Topology
+
+The number of pools in the Shareslake network is yet too small to automatically create a P2P topology because it could lead to splitting the network.
+Nevertheless, you can add your relays to the file `config/community-relays.json` of this repository, thus, other community pools can connect their relays to yours and help creating a mesh topology since the begging, avoiding all the relays to be holding from the Shareslake ones.
+
 ## Standalone node deployment
 
 These steps have to be followed twice, once for your relay and once for your block-producing node.

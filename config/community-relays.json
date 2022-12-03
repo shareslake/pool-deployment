@@ -1,0 +1,10 @@
+{
+    "relays": [
+        {
+            "name": "Shareslake",
+            "valency": 2,
+            "host": "relays.shareslake.network",
+            "port": 3001
+        },
+    ]
+}
