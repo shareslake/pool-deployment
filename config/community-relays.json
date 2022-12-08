@@ -8,7 +8,7 @@
         },
         {
             "name": "Spire",
-            "valency": 2,
+            "valency": 1,
             "host": "r1-slake.spireblockchain.com",
             "port": 3007
         }
