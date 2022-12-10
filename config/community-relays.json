@@ -7,9 +7,15 @@
             "port": 3001
         },
         {
-            "name": "Spire",
+            "name": "Spire R1",
             "valency": 1,
             "host": "r1-slake.spireblockchain.com",
+            "port": 3007
+        },
+        {
+            "name": "Spire R2",
+            "valency": 1,
+            "host": "r2-slake.spireblockchain.com",
             "port": 3007
         }
     ]
